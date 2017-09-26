@@ -25,7 +25,7 @@ Explanations:
 
 * `exec` - The PHPUnit binary to use (defaults to `phpunit` when not set)
 * `extra_params` - Pass these extra params to all PHPUnit calls.  I.e.: for Symfony2 you may need to set this to `['-c', '/path/too/app/phpunit.xml.dist']` for example
-* `docker_name` - The name of the Docker container.  If not set, you will need to run the `setPhpUnitDockerName` command first
+* `docker_name` - The name of the Docker container.  If not set, you will need to run the `Docker-PHPUnit: Save container name` command first
 * `code_path` - The path within the container where your code is located
 
 ## Commands
