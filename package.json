@@ -1,0 +1,95 @@
+{
+    "name": "vscode-docker-phpunit",
+    "displayName": "vscode-docker-phpunit",
+    "description": "Run PHPUnit tests and commands inside of a Docker container",
+    "version": "1.0.0",
+    "publisher": "eric-c-hansen",
+    "engines": {
+        "vscode": "^1.16.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:docker_phpunit.setPhpunitDockerContainerName",
+        "onCommand:docker_phpunit.runAllTestsInDirectory",
+        "onCommand:docker_phpunit.getPhpUnitVersion",
+        "onCommand:docker_phpunit.runAllTestsInClass",
+        "onCommand:docker_phpunit.runSpecificTestInClass",
+        "onCommand:docker_phpunit.pickClassOrMethodToTest"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "docker_phpunit.setPhpunitDockerContainerName",
+                "title": "Docker-PHPUnit: Save container name"
+            },
+            {
+                "command": "docker_phpunit.getPhpUnitVersion",
+                "title": "Docker-PHPUnit: Validate config and display version"
+            },
+            {
+                "command": "docker_phpunit.runAllTestsInDirectory",
+                "title": "Docker-PHPUnit: Run tests within the active editor directory"
+            },
+            {
+                "command": "docker_phpunit.runAllTestsInClass",
+                "title": "Docker-PHPUnit: Run all tests within the current editor window"
+            },
+            {
+                "command": "docker_phpunit.runSpecificTestInClass",
+                "title": "Docker-PHPUnit: Run test cursor is currently inside of or on"
+            },
+            {
+                "command": "docker_phpunit.pickClassOrMethodToTest",
+                "title": "Docker-PHPUnit: Choose the test method, class or file to run"
+            }
+        ],
+        "configuration":[
+            {
+                "title": "Docker PHPUnit",
+                "properties": {
+                    "phpunit.exec": {
+                        "type": "string",
+                        "default": "phpunit",
+                        "description": "Define the PHPUnit binary within the container to run"
+                    },
+                    "phpunit.docker_name": {
+                        "type": "string",
+                        "default": "",
+                        "description": "The container name to run the test(s) on"
+                    },
+                    "phpunit.extra_params": {
+                        "type": "array",
+                        "default": [],
+                        "description": "Extra params to pass into PHPUnit (i.e.: pass in config file)"
+                    },
+                    "phpunit.code_path": {
+                        "type": "string",
+                        "default": "/var/www/html",
+                        "description": "Root path in the container where the source is located (serverSourceRoot in launch.json most likely)"
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5",
+        "mocha": "^3.5.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "dockerode": "^2.5.1",
+        "lodash": "^4.17.4"
+    }
+}
