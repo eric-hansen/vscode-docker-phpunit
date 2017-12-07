@@ -38,3 +38,7 @@ The following commands are usable:
 * `Docker-PHPUnit: Run all tests within the current editor window` - Runs all test methods within the currently focused file
 * `Docker-PHPUnit: Run test cursor is currently inside of or on` - Run the test currently focused in (either by cursor or by looking backwards)
 * `Docker-PHPUnit: Choose the test method, class or file to run` - Displays a pick window to choose the specific method, class or file to run
+
+## Notes
+
+* This may not exactly work under Windows.  I have only tested under Mac, while Linux has a similar structure it is also a bit of an unknown as well.
