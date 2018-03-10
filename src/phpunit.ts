@@ -41,7 +41,7 @@ export class PhpUnit {
         let document = editor.document
 
         if (document && !document.isUntitled && document.uri && document.uri.fsPath.endsWith('.php')) {
-          let docPath = document.uri.fsPath
+          let docPath = document.uri.path
           let data = resolvePathOnly ? path.dirname(docPath) : docPath
 
           result = that.convertLocalPathToContainerPath(data)
